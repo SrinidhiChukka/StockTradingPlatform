@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        StockMarket market = new StockMarket();
+        User user = new User("Srinidhi", 10000); // initial balance
+
+        while (true) {
+            System.out.println("\n=== STOCK TRADING PLATFORM ===");
+            System.out.println("1. View Market Prices");
+            System.out.println("2. Buy Stock");
+            System.out.println("3. Sell Stock");
+            System.out.println("4. View Portfolio");
+            System.out.println("5. Update Market Prices");
+            System.out.println("6. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    market.displayStocks();
+                    break;
+                case 2:
+                    System.out.print("Enter stock symbol: ");
+                    String buySymbol = sc.next();
+                    Stock buyStock = market.findStock(buySymbol);
+                    if (buyStock != null) {
+                        System.out.print("Enter quantity: ");
+                        int qty = sc.nextInt();
+                        user.buyStock(buyStock, qty);
+                    } else {
+                        System.out.println("❌ Stock not found!");
+                    }
+                    break;
+                case 3:
+                    System.out.print("Enter stock symbol: ");
+                    String sellSymbol = sc.next();
+                    Stock sellStock = market.findStock(sellSymbol);
+                    if (sellStock != null) {
+                        System.out.print("Enter quantity: ");
+                        int qty = sc.nextInt();
+                        user.sellStock(sellStock, qty);
+                    } else {
+                        System.out.println("❌ Stock not found!");
+                    }
+                    break;
+                case 4:
+                    user.showPortfolio();
+                    break;
+                case 5:
+                    market.updateMarketPrices();
+                    System.out.println("📈 Market prices updated!");
+                    break;
+                case 6:
+                    System.out.println("👋 Exiting... Thank you for trading!");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice! Try again.");
+            }
+        }
+    }
+}
