@@ -1,0 +1,43 @@
+import java.util.HashMap;
+
+public class User {
+    private String name;
+    private double balance;
+    private HashMap<String, Integer> portfolio; // symbol → quantity
+
+    public User(String name, double balance) {
+        this.name = name;
+        this.balance = balance;
+        this.portfolio = new HashMap<>();
+    }
+
+    public void buyStock(Stock stock, int quantity) {
+        double cost = stock.getPrice() * quantity;
+        if (cost <= balance) {
+            balance -= cost;
+            portfolio.put(stock.getSymbol(), portfolio.getOrDefault(stock.getSymbol(), 0) + quantity);
+            System.out.println("✅ Bought " + quantity + " shares of " + stock.getSymbol());
+        } else {
+            System.out.println("❌ Not enough balance!");
+        }
+    }
+
+    public void sellStock(Stock stock, int quantity) {
+        int owned = portfolio.getOrDefault(stock.getSymbol(), 0);
+        if (owned >= quantity) {
+            balance += stock.getPrice() * quantity;
+            portfolio.put(stock.getSymbol(), owned - quantity);
+            System.out.println("✅ Sold " + quantity + " shares of " + stock.getSymbol());
+        } else {
+            System.out.println("❌ You don't own enough shares!");
+        }
+    }
+
+    public void showPortfolio() {
+        System.out.println("\n💼 Portfolio of " + name);
+        System.out.println("Balance: ₹" + balance);
+        for (String symbol : portfolio.keySet()) {
+            System.out.println(symbol + " → " + portfolio.get(symbol) + " shares");
+        }
+    }
+}
