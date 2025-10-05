@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+
+public class StockMarket {
+    private ArrayList<Stock> stocks = new ArrayList<>();
+
+    public StockMarket() {
+        stocks.add(new Stock("Tata Consultancy Services", "TCS", 3500));
+        stocks.add(new Stock("Infosys", "INFY", 1600));
+        stocks.add(new Stock("Reliance Industries", "RIL", 2500));
+    }
+
+    public void displayStocks() {
+        System.out.println("\n📊 Current Market Prices:");
+        for (Stock s : stocks) {
+            System.out.println(s.getSymbol() + " - " + s.getName() + " : ₹" + s.getPrice());
+        }
+    }
+
+    public Stock findStock(String symbol) {
+        for (Stock s : stocks) {
+            if (s.getSymbol().equalsIgnoreCase(symbol))
+                return s;
+        }
+        return null;
+    }
+
+    public void updateMarketPrices() {
+        for (Stock s : stocks) {
+            s.updatePrice();
+        }
+    }
+}
