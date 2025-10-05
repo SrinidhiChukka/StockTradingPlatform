@@ -1,0 +1,74 @@
+STOCK TRADING PLATFORM:
+
+A simple java-based stock trading simulator that allows users to view market prices, buy and sell stocks, and track portfolio performance.
+The project demonstrates object-oriented programming (oop) concepts, including class design, encapsulation, and method interaction.
+
+OVERVIEW:
+
+This project simulates a basic stock trading environment where users can:
+
+-view available stocks and their market prices
+-buy and sell shares
+-view their portfolio and remaining balance
+-update stock prices periodically to simulate market changes
+
+the system is designed for console interaction and can be extended to include gui or database features.
+
+FEATURES:
+
+-Market simulation with random price fluctuations
+-user portfolio tracking (balance, holdings, and transactions)
+-buy and sell operations with validation checks
+-oop-based modular design for easy scalability
+-clear, menu-driven console interface
+
+TECHNOLOGIES USED:
+
+Programming language: java
+Development environment: any ide or terminal supporting java
+Libraries: core java (no external dependencies)
+
+CLASS STRUCTURE:
+
+-stock
+represents a single stock with name, symbol, and price attributes.
+includes functionality to simulate price updates.
+
+-user
+manages user details such as balance and portfolio holdings.
+handles buying and selling of stocks with proper balance and quantity checks.
+
+-stockmarket
+maintains a list of available stocks and provides methods for displaying and updating stock prices.
+
+-main
+serves as the entry point for the application and manages the console-based user interface.
+
+SAMPLE WORKFLOW:
+The program starts by initializing a few sample stocks.
+The user is prompted with a menu to choose actions such as viewing market data, buying/selling stocks, or checking the portfolio.
+Prices can be updated periodically to simulate live market conditions.
+The session continues until the user chooses to exit.
+
+HOW TO RUN:
+
+save all .java files (Main.java, User.java, Stock.java, StockMarket.java) in one folder.
+open a terminal in that directory.
+compile the source files:
+javac .java
+
+RUN THE PROGRAM:
+
+java Main
+
+FUTURE ENHANCEMENTS:
+
+add file i/o or database integration to save portfolio data
+create a gui version using java swing or javafx
+implement profit/loss tracking and transaction history
+integrate real-time api data for live market simulation
+
+CONCLUSION:
+
+The stock trading platform provides a foundational example of how object-oriented programming can be applied to simulate real-world systems. 
+It demonstrates clean class design, logical data flow, and interaction between multiple entities in a simple and understandable way.
